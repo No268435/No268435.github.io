@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>国集作业记录 | No268435的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://no268435.github.io/favicon.ico?v=1762090422312">
+<link rel="stylesheet" href="https://no268435.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="RT
+突然感觉一道题写完贼容易忘
+所以写一下做法粘一下题解链接
+本博客第二篇与学习有关的博客
+预感咕咕咕
+
+由于懒所以没有写Latex的公式符号QAQ
+已经咕咕咕了QAQ
+
+AGC007
+C
+一看就很神仙QAQ人类智慧题
+把它变成2*n个区..." />
+    <meta name="keywords" content="杂" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://no268435.github.io">
+        <img src="https://no268435.github.io/images/avatar.png?v=1762090422312" class="site-logo">
+        <h1 class="site-title">No268435的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      「ここにいる人の数だけ道はある 自分の夢の方に歩けばいい」
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://no268435.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">国集作业记录</h2>
+            <div class="post-date">2019-12-12</div>
+            
+              <div class="feature-container" style="background-image: url('https://no268435.github.io/post-images/guo-ji-zuo-ye-ji-lu.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>RT</p>
+<p>突然感觉一道题写完贼容易忘</p>
+<p>所以写一下做法<s>粘一下题解链接</s></p>
+<p><s>本博客第二篇与学习有关的博客</s></p>
+<p><s>预感咕咕咕</s></p>
+<!-- more -->
+<p>由于懒所以没有写Latex的公式符号QAQ</p>
+<p><s>已经咕咕咕了QAQ</s></p>
+<hr>
+<h2 id="agc007">AGC007</h2>
+<h3 id="c">C</h3>
+<p>一看就很神仙QAQ<s>人类智慧题</s></p>
+<p>把它变成2*n个区间,每一次删去两个点并且在答案里累加两个点距离的期望,首项和公差可以直接往下推期望值<s>但是不会证明QAQ</s></p>
+<p><a href="https://www.luogu.com.cn/record/28244593">记录</a></p>
+<h3 id="e">E</h3>
+<p>比上面那个看起来好点QAQ<s>虽然我也只会看题解</s></p>
+<p>首先是二分转成判定性问题,然后设dp[w][a][b]表示从w出发向子树内走花费a,回到w花费b的状态,转移显然,然而只去除无用的取值仍然状态数爆炸QAQ,这个时候发现对于一个点w,如果有两个状态[a1][b1]和[a2][b2]并且a1&lt;b1且a2&lt;b2,那么后一个状态就没用了QAQ,所以这样处理之后状态数就可以了<s>虽然不会证但是好像状态数是O(n)的</s></p>
+<p><a href="https://www.luogu.com.cn/record/28241408">记录</a></p>
+<h3 id="f">F</h3>
+<p>肥肠玄妙QAQ</p>
+<p>把字符串抄写看成二维的图,用队列保存需要拐弯的点然后求答案QAQ</p>
+<p><s>因为不会言传所以这么短QAQ</s></p>
+<p><a href="https://www.luogu.com.cn/record/28241408">记录</a></p>
+<hr>
+<h2 id="agc008">AGC008</h2>
+<h3 id="d">D</h3>
+<p>不难QAQ正着填一遍反着填一遍就好了QAQ</p>
+<p><a href="https://www.luogu.com.cn/record/28254408">记录</a></p>
+<hr>
+<h2 id="agc009">AGC009</h2>
+<h3 id="b">B</h3>
+<p>首先赢了自己的向自己连一条边然后从底到上给儿子排序一遍就好了QAQ</p>
+<p><a href="https://www.luogu.com.cn/record/28255886">记录</a></p>
+<h3 id="c-2">C</h3>
+<p><s>一开始想了一个玄妙的线段树定义状态的做法然后没想出转移于是放弃了QAQ</s></p>
+<p>首先判掉无解,设dp状态为将当前数分到分隔较大的集合的方案数,然后发现可以转移的上一个状态是一段区间QAQ,然后前缀和就可以了</p>
+<p><a href="https://www.luogu.com.cn/record/28279158">记录</a></p>
+<h3 id="d-2">D</h3>
+<p>点分树最小深度QAQ</p>
+<p>还不会淀粉质QAQ建议看题解QAQ</p>
+<p><s>那为什么来做这个题啊喂</s></p>
+<p><a href="https://www.cnblogs.com/bestFy/p/9491887.html">这里有一篇</a></p>
+<p><a href="https://www.luogu.com.cn/record/28340213">记录</a></p>
+<hr>
+<h2 id="agc010">AGC010</h2>
+<h3 id="c-3">C</h3>
+<p><a href="https://www.luogu.com.cn/blog/litble-blog/solution-at2304">litble的题解</a>很有意思QAQ</p>
+<p>另外这里有一个结论:多个集合里的物品配对可以完全配对的条件是物品总数是偶数并且没有一个集合大小超过总数量的一半QAQ</p>
+<p><a href="https://www.luogu.com.cn/record/28306506">记录</a></p>
+<h3 id="d-3">D</h3>
+<p><s>这题总觉得哪里讲过然而忘了</s></p>
+<p>考虑把情况按照奇偶数的数量的奇偶性分类,然后分几种情况讨论一下就好了QAQ</p>
+<p><s>博弈论题总是很像结论题QAQ</s></p>
+<p><a href="https://www.luogu.com.cn/record/28335912">记录</a></p>
+<hr>
+<h2 id="agc011">AGC011</h2>
+<h3 id="d-4">D</h3>
+<p><s>一开始找了一个贼鬼畜的规律最后wa了QAQ</s></p>
+<p>实际上发现每一次如果开头是A那就弹回去,是B就去头把后面取反再在后面加个A这样就好了QAQ</p>
+<p><s>然后洛谷题解里面有人就这样暴力A了这题</s></p>
+<p>事实上发现2n次后这一列一定会变成...BABA这样的形式,于是k大于2n时先用上面的方法跑2n次然后如果n是奇数就特判一下就好了QAQ</p>
+<p><a href="https://www.luogu.com.cn/record/28515109">记录</a></p>
+<hr>
+<h2 id="agc012">AGC012</h2>
+<h3 id="c-4">C</h3>
+<p><a href="https://www.mina.moe/archives/9637">MiNa!上的题解</a></p>
+<p>构造方法有好几种QAQ个人觉得上面这个最好理解了</p>
+<p><a href="https://www.luogu.com.cn/record/28366061">记录</a></p>
+<h3 id="d-5">D</h3>
+<p>O(n^2)建边连通块还是不难的QAQ</p>
+<p>然后发现建边的时候只有每个颜色最小值之间和同颜色之间连边是必要的并且只有全局最小的那个球所在连通块有贡献,然后就可以做了QAQ</p>
+<p><s>然后发现并不用实际建边</s></p>
+<p><a href="https://www.luogu.com.cn/record/28396375">记录</a></p>
+<h3 id="e-2">E</h3>
+<p><s>鬼知道会是状压dp啊QAQ</s></p>
+<p>如上,发现v的取值只有大概logv种,于是先处理每个点在某个v的取值上可以达到的最左端和最右端,然后状压dp出用了哪些取值时能达到的最左最右,然后再用一开始的位置的左右边比较有没有并起来可以完全覆盖的方案就可以了QAQ</p>
+<p><s>讲的好鬼畜</s></p>
+<p><s>还是扔篇<a href="https://www.cnblogs.com/cnyali-Tea/p/11448528.html">别人的题解</a></s></p>
+<p><a href="https://www.luogu.com.cn/record/28462932">记录</a></p>
+<hr>
+<h2 id="agc013">AGC013</h2>
+<h3 id="c-5">C</h3>
+<p><s>模型转化然而原模型我都不知道QAQ</s></p>
+<p>首先两个蚂蚁相遇可以直接理解成编号交换,然后发现链上的话相对顺序一定不变,环上的话比链多了一个要知道第一只蚂蚁的位置,于是在每只蚂蚁每次l-1-&gt;1或1-&gt;l-1的时候统计一下就可以知道第一只蚂蚁的位置了QAQ</p>
+<p><s>统计次数的时候边界条件有点烦是真的QAQ</s></p>
+<p><a href="https://www.luogu.com.cn/record/28466602">记录</a></p>
+<h3 id="d-6">D</h3>
+<p><s>首先当然是naive的n^2想法啦QAQ</s></p>
+<p>上面的n^2的问题是因为会算重,于是尝试去重,发现所有折线可以通过只计算中间到达过黑球数为零的状态得到,于是多记一维是否到达过零就可以了QAQ以及先取黑球再放球进去再拿白球也算到了零QAQ</p>
+<p><a href="https://www.luogu.com.cn/record/28476592">记录</a></p>
+<hr>
+<h2 id="agc014">AGC014</h2>
+<h3 id="d-7">D</h3>
+<p><s>通过看题解</s>可以发现只有树有完美匹配的时候后手才能赢否则先手就能赢QAQ</p>
+<p>具体证明的话扔个<a href="https://blog.csdn.net/werkeytom_ftd/article/details/78106961">题解</a></p>
+<p><s>其实结论不难找QAQ然而还是没找出来QAQ</s></p>
+<p><a href="https://www.luogu.com.cn/record/28479117">记录</a></p>
+<h3 id="e-3">E</h3>
+<p><s>最近第一道有点码量的题结果调了好久QAQ</s></p>
+<p>发现每次删的蓝边只能被红边覆盖一次否则不能删,于是每一次找一条满足的边删掉,<s>然后发现树剖于是直接上就是了</s>,记得维护覆盖的红边的编号</p>
+<p><s>连线段树都打错了QAQ</s></p>
+<p>好像别人还有其他的做法比较简单QAQ<s>自己去找题解吧</s></p>
+<p><a href="https://www.luogu.com.cn/record/28508664">记录</a></p>
+<hr>
+<h2 id="agc015">AGC015</h2>
+<h3 id="c-6">C</h3>
+<p><s>没有看题解居然写对了QAQ</s></p>
+<p>洛谷的题解就可以了QAQ二维前缀和有点难写然后要注意边界上的情况QAQ</p>
+<p><a href="https://www.luogu.com.cn/record/28508669">记录</a></p>
+<h3 id="d-8">D</h3>
+<p>此题建议阅读英文题面QAQ</p>
+<p><s>我一开始想了半天数位dp...</s></p>
+<p>事实上是得到三个值区间QAQ</p>
+<p>具体扔个<a href="https://www.cnblogs.com/Serene-shixinyi/p/9077134.html">题解</a></p>
+<p><a href="https://www.luogu.com.cn/record/28508655">记录</a></p>
+<h3 id="e-4">E</h3>
+<p>首先无穷久之后每个人的顺序是按速度排的,然后发现每个点能影响到的点是一个区间,证明的话洛谷上的题解说可以反证,不过想了一下应该也可以分类讨论一下,然后区间覆盖的dp就很经典啦QAQ</p>
+<p><s>说起来不太难,代码还是比较长的QAQ</s></p>
+<p><a href="https://www.luogu.com.cn/record/28510061">记录</a></p>
+<h2 id="agc016">AGC016</h2>
+<h3 id="b-2">B</h3>
+<p><s>感觉不难想QAQ然而还是差一点QAQ</s></p>
+<p>分类讨论,具体看洛谷题解就可以了QAQ</p>
+<p><a href="https://www.luogu.com.cn/record/28516243">记录</a></p>
+<h3 id="c-7">C</h3>
+<p><s>wdnmd2-1e^9/(w*h)</s></p>
+<p>先贪心构造,每w*h放一个大负数其余放1,然后发现不行QAQ,于是其余放k大负数变成<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mo>(</mo><mo>(</mo><mi>w</mi><mo>∗</mo><mi>h</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>∗</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">-((w*h-1)*k+1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mopen">(</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>,于是就做完了...</p>
+<p>...个鬼QAQ</p>
+<p>一开始用了2,然后发现会wa,然后试了各种各样的值发现不判都会wa,然后发现刚好用500不判才能过QAQ</p>
+<p><s>awsl</s></p>
+<p><a href="https://www.luogu.com.cn/record/28524213">记录</a></p>
+<h3 id="d-9">D</h3>
+<p><s>后面不会做QAQzbl</s></p>
+<p>可以把洛谷题解和<a href="https://www.cnblogs.com/yoyoball/p/9817647.html">这篇题解</a>都看一下QAQ</p>
+<p><a href="https://www.luogu.com.cn/record/28530365">记录</a></p>
+<h3 id="e-5">E</h3>
+<p>感觉贼神仙QAQ</p>
+<p>先算出一只鸡最后要活着要保证哪些鸡在最后时刻之前必须要活着,然后再判断两只鸡的要求有没有矛盾QAQ</p>
+<p><s>说起来简单想起来难QAQ</s></p>
+<p><a href="https://www.luogu.com.cn/record/28569097">记录</a></p>
+<hr>
+<h2 id="agc017">AGC017</h2>
+<h3 id="d-10">D</h3>
+<p>博弈论题QAQ<s>又是我不会的经典结论</s></p>
+<p>一句话:sg(i)=xor(sg(son)+1)</p>
+<p>证明的话看这篇<a href="https://www.cnblogs.com/Saurus/p/7208361.html">题解</a></p>
+<p><a href="https://www.luogu.com.cn/record/28736759">记录</a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://no268435.github.io/tag/RVl2qwrTj/" class="tag">
+                    杂
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://no268435.github.io/post/csp-s2019-you-ji/">
+                  <h3 class="post-title">
+                    CSP-S2019游记
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '39827dfd7d74025ef26f',
+        clientSecret: '450bb29330bfabb9f87e2e7e733ef7682a0b9547',
+        repo: 'No268435.github.io',
+        owner: 'No268435',
+        admin: ['No268435'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

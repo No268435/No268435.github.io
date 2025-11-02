@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>背单词小工具 | No268435的博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://no268435.github.io/favicon.ico?v=1762090422312">
+<link rel="stylesheet" href="https://no268435.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="有一天突然看到前辈写的这个
+于是突发奇想复现了一个
+
+并且完善了功能
+还有AI加成让你感受更舒适
+其实挺傻的QAQ
+仍然是第一次看到某个单词就会展示
+然后之后都是给出意思测验,错误一定次数会给出首字母,再错就会展示单词
+真正的功能改进其实是..." />
+    <meta name="keywords" content="杂" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://no268435.github.io">
+        <img src="https://no268435.github.io/images/avatar.png?v=1762090422312" class="site-logo">
+        <h1 class="site-title">No268435的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      「ここにいる人の数だけ道はある 自分の夢の方に歩けばいい」
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://no268435.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">背单词小工具</h2>
+            <div class="post-date">2019-12-30</div>
+            
+              <div class="feature-container" style="background-image: url('https://no268435.github.io/post-images/bei-dan-ci-xiao-gong-ju.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>有一天突然看到前辈写的<a href="https://www.mina.moe/archives/1618">这个</a></p>
+<p>于是突发奇想复现了一个</p>
+<!-- more -->
+<p>并且完善了功能</p>
+<p><s>还有AI加成让你感受更舒适</s></p>
+<p><s>其实挺傻的QAQ</s></p>
+<p>仍然是第一次看到某个单词就会展示</p>
+<p>然后之后都是给出意思测验,错误一定次数会给出首字母,再错就会展示单词</p>
+<p><s>真正的功能改进其实是强制在第一次看到时和测试给出单词后强制要求复读数次</s></p>
+<p>使用前要把要记的单词放在english.in中,用ANSI编码保存,然后就可以了</p>
+<p>后面可能会有存档或者自选参数的功能?<s>预感咕咕咕</s>已加</p>
+<p>另外有评分机制了QwQ如何评分自己试试吧</p>
+<p>就酱QAQ</p>
+<hr>
+<p>update 2021.10.9</p>
+<p><s>想不到自己还有用上这东西的一天...</s></p>
+<p>作为复健的一个小练习改了一点代码QAQ</p>
+<p>应该会比之前科学QAQ</p>
+<hr>
+<p>update 2021.10.26</p>
+<p>改了一些机制</p>
+<p>现在第一次打开的体验应该能提升一些</p>
+<p>然后现在能实时保存了<s>这一部分还没经过Debug...应该没啥问题</s></p>
+<p>就酱QAQ</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#include&lt;conio.h&gt;
+using namespace std;
+int n, m, all, hget, rept, beft, aftt;
+wstring s1, s2;
+vector&lt;pair&lt;wstring, wstring&gt; &gt;sv;
+vector&lt;int&gt;t, gpos;
+char ccc;
+int stop()
+{
+	cout &lt;&lt; &quot;Press any key to continue...&quot; &lt;&lt; endl;
+	_getch(); return 0;
+}
+int init()
+{
+	wifstream fin(&quot;english.in&quot;);
+	wifstream fsv(&quot;english.save&quot;);
+	fsv &gt;&gt; rept &gt;&gt; beft &gt;&gt; aftt;
+	if (!(rept || beft || aftt))rept = 3, beft = 2, aftt = 1;
+	while (getline(fin, s1))getline(fin, s2), fsv &gt;&gt; m,
+		sv.push_back(make_pair(s1, s2)), t.push_back(m);
+	fin.close();
+	fsv.close();
+	return 0;
+}
+int save()
+{
+	wofstream fout(&quot;english.save&quot;);
+	fout &lt;&lt; rept &lt;&lt; ' ' &lt;&lt; beft &lt;&lt; ' ' &lt;&lt; aftt &lt;&lt; endl;
+	for (int i = 0; i &lt; n; i++)
+		fout &lt;&lt; t[i] &lt;&lt; endl;
+	fout.close();
+	return 0;
+}
+int repeat(int pos)
+{
+	cout &lt;&lt; &quot;Type it for &quot; &lt;&lt; rept &lt;&lt; &quot; times!&quot; &lt;&lt; endl;
+	int tot = rept;
+	for (int j = 1; j &lt;= rept; j++)
+	{
+		getline(wcin, s1);
+		if (s1 == sv[pos].first)cout &lt;&lt; &quot;You are right!&quot; &lt;&lt; endl;
+		else cout &lt;&lt; &quot;You are wrong, try again!&quot; &lt;&lt; endl, j--, tot = max(0, tot - 1);
+		if (j != rept)cout &lt;&lt; rept - j &lt;&lt; &quot; times left.&quot; &lt;&lt; endl;
+	}
+	return tot;
+}
+int getpos()
+{
+	int ans = 1e9;
+	for (int i = 0; i &lt; n; i++)ans = min(ans, t[i]);
+	gpos.clear();
+	for (int i = 0; i &lt; n; i++)
+		if (t[i] - ans &lt;= 2)gpos.push_back(i);
+	return gpos[rand() % gpos.size()];
+}
+int main()
+{
+	init();
+	n = sv.size();
+	do {
+		system(&quot;cls&quot;);
+		cout &lt;&lt; &quot;Welcome!&quot; &lt;&lt; endl;
+		cout &lt;&lt; &quot;1: Start&quot; &lt;&lt; endl;
+		cout &lt;&lt; &quot;2: Reset&quot; &lt;&lt; endl;
+		cout &lt;&lt; &quot;3: Settings&quot; &lt;&lt; endl;
+		cout &lt;&lt; &quot;Caution: You should save word in ANSI.&quot; &lt;&lt; endl;
+		ccc = _getch();
+	} while (ccc &lt; '1' || ccc&gt;'3');
+	if (ccc == '2')
+	{
+		for (int i = 0; i &lt; n; i++)
+			t[i] = 0;
+		save();
+		return 0;
+	}
+	if (ccc == '3')
+	{
+		do {
+			system(&quot;cls&quot;);
+			cout &lt;&lt; &quot;What mode do you want to use?&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;1: 1 time(s) repeat 1 time(s) chance 1 time(s) last chance&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;2: 2 time(s) repeat 2 time(s) chance 1 time(s) last chance&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;3: 3 time(s) repeat 2 time(s) chance 1 time(s) last chance&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;4: 3 time(s) repeat 3 time(s) chance 2 time(s) last chance&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;5: others&quot; &lt;&lt; endl;
+			ccc = _getch();
+		} while (ccc &lt; '1' || ccc&gt;'5');
+		if (ccc == '1')rept = 1, beft = 1, aftt = 1;
+		if (ccc == '2')rept = 2, beft = 2, aftt = 1;
+		if (ccc == '3')rept = 3, beft = 2, aftt = 1;
+		if (ccc == '4')rept = 3, beft = 3, aftt = 2;
+		if (ccc == '5')
+		{
+			cout &lt;&lt; &quot;Repeat time(s):&quot;;
+			cin &gt;&gt; rept;
+			cout &lt;&lt; &quot;Test chance time(s):&quot;;
+			cin &gt;&gt; beft;
+			cout &lt;&lt; &quot;Test last chance time(s):&quot;;
+			cin &gt;&gt; aftt;
+		}
+		save();
+		return 0;
+	}
+	system(&quot;cls&quot;);
+	cout &lt;&lt; &quot;How many times?&quot; &lt;&lt; endl;
+	cin &gt;&gt; m;
+	while (getchar() != '\n');
+	system(&quot;cls&quot;);
+	srand(time(0));
+	for (int i = 1; i &lt;= m; i++)
+	{
+		cout &lt;&lt; '#' &lt;&lt; i &lt;&lt; ' ';
+		int pos = getpos();
+		if (rand() % 5 &gt;= t[pos])
+		{
+			cout &lt;&lt; &quot;Learn&quot; &lt;&lt; endl;
+			wcout &lt;&lt; sv[pos].first &lt;&lt; endl;
+			wcout &lt;&lt; sv[pos].second &lt;&lt; endl;
+			all += rept;
+			hget += repeat(pos);
+			stop();
+			t[pos]++;
+		}
+		else
+		{
+			cout &lt;&lt; &quot;Test&quot; &lt;&lt; endl;
+			wcout &lt;&lt; sv[pos].second &lt;&lt; endl;
+			cout &lt;&lt; &quot;Please tell me the word:&quot; &lt;&lt; endl;
+			bool is = 0;
+			int tot = beft + aftt;
+			all += tot;
+			for (int j = 1; j &lt;= beft; j++)
+			{
+				getline(wcin, s1);
+				if (s1 == sv[pos].first)
+				{
+					is = 1;
+					cout &lt;&lt; &quot;You are right!&quot; &lt;&lt; endl;
+					stop();
+					break;
+				}
+				else cout &lt;&lt; &quot;You are wrong, try again!&quot; &lt;&lt; endl, tot = max(0, tot - 1);
+			}
+			if (!is)
+			{
+				cout &lt;&lt; &quot;You have tried &quot; &lt;&lt; beft &lt;&lt; &quot; times!&quot; &lt;&lt; endl;
+				cout &lt;&lt; &quot;The first letter of the word is &quot;;
+				wcout &lt;&lt; sv[pos].first[0] &lt;&lt; '.' &lt;&lt; endl;
+				for (int j = 1; j &lt;= aftt; j++)
+				{
+					getline(wcin, s1);
+					if (s1 == sv[pos].first)
+					{
+						is = 1;
+						cout &lt;&lt; &quot;You are right!&quot; &lt;&lt; endl;
+						stop();
+						break;
+					}
+					else { if (j != aftt)cout &lt;&lt; &quot;You are wrong, try again!&quot; &lt;&lt; endl; tot = max(0, tot - 1); }
+				}
+				if (!is)
+				{
+					cout &lt;&lt; &quot;You have tried &quot; &lt;&lt; beft + aftt &lt;&lt; &quot; times!&quot; &lt;&lt; endl;
+					cout &lt;&lt; &quot;The word is &quot;;
+					wcout &lt;&lt; sv[pos].first &lt;&lt; '.' &lt;&lt; endl;
+					repeat(pos);
+					stop();
+					t[pos]--;
+				}
+			}
+			hget += tot;
+		}
+		save();
+		system(&quot;cls&quot;);
+	}
+	cout &lt;&lt; &quot;Finish!\nYou got &quot; &lt;&lt; hget &lt;&lt; '/' &lt;&lt; all &lt;&lt; &quot; scores!&quot; &lt;&lt; endl;
+	if (hget == all)cout &lt;&lt; &quot;Perfect!&quot; &lt;&lt; endl;
+	else if (hget &gt;= all * 0.9)cout &lt;&lt; &quot;Excellent!&quot; &lt;&lt; endl;
+	else if (hget &gt;= all * 0.8)cout &lt;&lt; &quot;Great!&quot; &lt;&lt; endl;
+	else if (hget &gt;= all * 0.7)cout &lt;&lt; &quot;Good!&quot; &lt;&lt; endl;
+	else if (hget &gt;= all * 0.6)cout &lt;&lt; &quot;OK!&quot; &lt;&lt; endl;
+	else if (hget &gt;= all * 0.5)cout &lt;&lt; &quot;Not too bad!&quot; &lt;&lt; endl;
+	else if (hget &gt;= all * 0.3)cout &lt;&lt; &quot;Bad!&quot; &lt;&lt; endl;
+	else cout &lt;&lt; &quot;Failed...&quot; &lt;&lt; endl;
+	stop();
+	return 0;
+}
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://no268435.github.io/tag/RVl2qwrTj/" class="tag">
+                    杂
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://no268435.github.io/post/thuwc2020-you-ji/">
+                  <h3 class="post-title">
+                    THUWC2020游记
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '39827dfd7d74025ef26f',
+        clientSecret: '450bb29330bfabb9f87e2e7e733ef7682a0b9547',
+        repo: 'No268435.github.io',
+        owner: 'No268435',
+        admin: ['No268435'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
